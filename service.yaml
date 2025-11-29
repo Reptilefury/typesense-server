@@ -14,11 +14,20 @@ spec:
     spec:
       containerConcurrency: 1
       containers:
-      - args:
+      - env:
+        - name: TYPESENSE_DATA_DIR
+          value: /tmp/typesense
+        - name: TYPESENSE_API_KEY
+          value: blnk-api-key
+        - name: TYPESENSE_LISTEN_PORT
+          value: '8108'
+        - name: TYPESENSE_ENABLE_CORS
+          value: 'true'
+        args:
         - --data-dir=/tmp/typesense
         - --api-key=blnk-api-key
         - --listen-port=8108
-        image: typesense/typesense:0.23.1
+        image: typesense/typesense:27.0
         ports:
         - containerPort: 8108
           name: http1
