@@ -12,22 +12,20 @@ spec:
         autoscaling.knative.dev/minScale: '1'
         run.googleapis.com/startup-cpu-boost: 'true'
     spec:
-      containerConcurrency: 10
+      containerConcurrency: 1
       containers:
       - args:
-        - --data-dir
-        - /data
+        - --data-dir=/tmp/typesense
         - --api-key=blnk-api-key
-        - --listen-port
-        - "8108"
+        - --listen-port=8108
         image: typesense/typesense:0.23.1
         ports:
         - containerPort: 8108
           name: http1
         resources:
           limits:
-            cpu: '0.5'
-            memory: 256Mi
+            cpu: '1'
+            memory: 512Mi
         livenessProbe:
           httpGet:
             path: /health
