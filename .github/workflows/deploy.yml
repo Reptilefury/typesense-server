@@ -30,22 +30,22 @@ jobs:
           gcloud run services replace service.yaml \
             --region us-central1 \
             --platform managed \
-            --project heroic-equinox-474616-i5
+            --project upheld-dragon-472517-b6
 
       - name: Update traffic to latest revision
         run: |
           gcloud run services update-traffic typesense \
             --region us-central1 \
             --to-latest \
-            --project heroic-equinox-474616-i5
+            --project upheld-dragon-472517-b6
 
       - name: Grant Blnk permission to invoke TypeSense
         run: |
           gcloud run services add-iam-policy-binding typesense \
             --region us-central1 \
-            --member=serviceAccount:438091062981-compute@developer.gserviceaccount.com \
+            --member=serviceAccount:728077413846-compute@developer.gserviceaccount.com \
             --role=roles/run.invoker \
-            --project heroic-equinox-474616-i5
+            --project upheld-dragon-472517-b6
 
       - name: Deployment summary
         run: |
